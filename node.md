@@ -52,6 +52,38 @@
     * ApplicationContext:BeanFactory接口的子接口，提供更多更强大的功能，一般是开发人员进行使用
       * 加载配置文件时就会把配置文件中的进行创建
 3. ApplicationContext接口实现类
+![img_4.png](img_4.png)
+   
+### IOC操作Bean管理
+#### 什么是bean管理类
+* Bean管理指的是俩个操作
+   1. Spring创建对象
+   2. Spring注入属性
+   
+##### 使用无参构造进行注入
+```xml
+<!-- 通过无参进行注入，必须存在无参构造函数 -->
+<bean id="user" class="com.imust.entity.User">
+  <property name="name" value="李华" />
+  <property name="age" value="19" />
+</bean>
+```
+##### 使用有参构造进行注入 
+```xml
+<!-- 通过有参进行注入 -->
+<bean id="user1" class="com.imust.entity.User">
+  <constructor-arg name="name" value="路飞" />
+  <constructor-arg name="age" value="19" />
+</bean>
+```
+##### 使用p名称空间注入
+第一步 添加p名称空间在配置文件中
+> xmlns:p="http://www.springframework.org/schema/p"
+
+第二步 进行属性注入，在bean标签中进行操作 
+```xml
+<bean id="user2" class="com.imust.entity.User" p:age="22" p:name="萨博"></bean>
+```
 
 
 ## AOP 
