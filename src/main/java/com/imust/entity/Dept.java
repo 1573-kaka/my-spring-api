@@ -8,4 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Dept {
+    private Integer did;
+    private String dname;
 }

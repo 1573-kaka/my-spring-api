@@ -2,10 +2,54 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="user" class="com.imust.entity.User">
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.imust" use-default-filters="true">
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+    </context:component-scan>
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+
+    <!-- 通过无参进行注入，必须存在无参构造函数
+    <bean id="user" class="com.imust.entity.user.User">
         <property name="name" value="李华" />
         <property name="age" value="19" />
     </bean>
+
+    &lt;!&ndash; 通过有参进行注入 &ndash;&gt;
+    <bean id="user1" class="com.imust.entity.user.User">
+        <constructor-arg name="name" value="路飞" />
+        <constructor-arg name="age" value="19" />
+    </bean>-->
+
+<!--    <bean id="user2" class="com.imust.entity.user.User" p:age="22" p:name="萨博"></bean>-->
+
+    <!--
+        实现自动装配
+        bean标签属性autowire，配置自动装配
+        autowire属性常用两个值：
+            byName根据属性名称注入，注入值bean的id值和类属性名称一致
+            byType根据属性类型注入
+    -->
+<!--    <bean id="emp" class="com.imust.entity.Emp" autowire="byType"></bean>-->
+
+<!--    <bean id="dept" class="com.imust.entity.Dept"></bean>-->
+
+<!--    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="driverClassName" value="${jdbc.driver}"></property>-->
+<!--        <property name="url" value="${jdbc.url}"></property>-->
+<!--        <property name="username" value="${jdbc.username}"></property>-->
+<!--        <property name="password" value="${jdbc.password}"></property>-->
+<!--    </bean>-->
+
+    <!--<bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>-->
 </beans>

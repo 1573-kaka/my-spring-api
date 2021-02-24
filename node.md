@@ -61,28 +61,32 @@
    2. Spring注入属性
    
 ##### 使用无参构造进行注入
+
 ```xml
 <!-- 通过无参进行注入，必须存在无参构造函数 -->
-<bean id="user" class="com.imust.entity.User">
-  <property name="name" value="李华" />
-  <property name="age" value="19" />
+<bean id="user" class="com.imust.entity.user.User">
+    <property name="name" value="李华"/>
+    <property name="age" value="19"/>
 </bean>
 ```
-##### 使用有参构造进行注入 
+##### 使用有参构造进行注入
+
 ```xml
 <!-- 通过有参进行注入 -->
-<bean id="user1" class="com.imust.entity.User">
-  <constructor-arg name="name" value="路飞" />
-  <constructor-arg name="age" value="19" />
+<bean id="user1" class="com.imust.entity.user.User">
+    <constructor-arg name="name" value="路飞"/>
+    <constructor-arg name="age" value="19"/>
 </bean>
 ```
 ##### 使用p名称空间注入
 第一步 添加p名称空间在配置文件中
 > xmlns:p="http://www.springframework.org/schema/p"
 
-第二步 进行属性注入，在bean标签中进行操作 
+第二步 进行属性注入，在bean标签中进行操作
+
 ```xml
-<bean id="user2" class="com.imust.entity.User" p:age="22" p:name="萨博"></bean>
+
+<bean id="user2" class="com.imust.entity.user.User" p:age="22" p:name="萨博">没有</bean>
 ```
 
 #### IOC操作Bean管理（FactoryBean）
@@ -121,6 +125,34 @@
 #### IOC操作Bean管理（xml自动装配）
 1. 什么是自动装配
     * 根据指定装配规则(属性名称或者属性类型)，Spring自动将匹配的属性值进行注入
+
+#### IOC操作bean管理(基于注解方式)
+1. 什么是注解
+    * 注解是代码特殊标记，格式：@注解名称(属性名称=属性值, 属性名称=属性值)
+    * 使用注解，注解作用在类、方法和属性上面
+    * 使用注解的目的：简化xml配置
+    
+2. Spring针对Bean管理中创建对象提供注解
+    * @Component
+    * @Service
+    * @Controller
+    * @Repository
+    
+    *上面四个注解功能是一样的，都可以用来创建bean实例
+3. 基于注解方式实现对象的创建 
+    * 第一步 引入依赖
+    * 第二步 开启注解扫描
+    * 创建类，在类上面添加创建对象注解
+    
+4. 开启注解扫描细节
+
+5. 基于注解方式实现属性注入
+    * @Autowired:根据属性类型进行自动装配
+        * 第一步 把service和dao对象创建，在service和dao类上添加创建对象注解
+        * 第二步 在service注入dao对象，在service类添加dao类型属性，在属性上面使用注解
+    * @Qualifier:根据属性名称进行注入
+    * @Resource:可以根据属性类型注入，也可以根据属性名称注入
+    * @Value:注入普通类型属性
 
 ## AOP 
 
