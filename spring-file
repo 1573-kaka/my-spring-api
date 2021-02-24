@@ -1,4 +1,4 @@
-Spring框架概述
+-- Spring框架概述
 1、Spring是轻量级的javaEE框架
 
 2、Spring可以解决企业应用开发的复杂性
@@ -14,3 +14,21 @@ Spring框架概述
   （4）方便和其他框架进行整合
   （5）方便进行事务操作
   （6）降低API开发难度
+
+-- IOC容器
+  （1）IOC底层原理
+  （2）IOC接口（BeanFactory）
+  （3）IOC操作Bean管理（基于xml）
+  （4）IOC操作Bean管理（基于注解）
+
+  IOC概念和原理
+    （1）控制反转：把对象创建和对象之间的调用过程，交给Spring进行管理
+    （2）使用IOC的目的：为了降低耦合度
+  IOC底层原理
+     （1）xml解析、工厂模式、反射
+
+-- AOP
+
+-- JdbcTemplate
+
+-- 事务管理
